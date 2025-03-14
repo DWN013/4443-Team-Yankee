@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainSettingsActivity">
 
-    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/settings_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 
 </LinearLayout>
