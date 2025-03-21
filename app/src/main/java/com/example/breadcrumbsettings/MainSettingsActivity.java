@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.breadcrumbsettings.model.SettingsItem;
+import com.example.breadcrumbsettings.settingsSubActivities.AppsAndNotificationsActivity;
 import com.example.breadcrumbsettings.settingsSubActivities.NetworksActivity;
 import com.example.breadcrumbsettings.settingsSubActivities.NotificationsActivity;
 
@@ -58,6 +59,9 @@ public class MainSettingsActivity extends AppCompatActivity {
                 switch (position) {
                     case 0: // Network & internet
                         startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
+                        break;
+                    case 2: // Notifications
+                        startActivity(new Intent(MainSettingsActivity.this, AppsAndNotificationsActivity.class));
                         break;
                     case 3: // Notifications
                         startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
