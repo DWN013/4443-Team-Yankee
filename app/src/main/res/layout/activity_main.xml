@@ -4,11 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="#eeedf4"
     android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainSettingsActivity">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/search_bar_background"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/ic_menu_search"
+        android:layout_marginEnd="8dp"
+        app:tint="#40434b" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Search settings"
+            android:textSize="18sp"
+            android:textColor="#40434b"
+            android:background="@null" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/settings_recycler_view"
