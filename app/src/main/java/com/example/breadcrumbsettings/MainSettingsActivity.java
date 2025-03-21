@@ -1,5 +1,6 @@
 package com.example.breadcrumbsettings;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.breadcrumbsettings.model.SettingsItem;
+import com.example.breadcrumbsettings.settingsSubActivities.NetworksActivity;
+import com.example.breadcrumbsettings.settingsSubActivities.NotificationsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +40,31 @@ public class MainSettingsActivity extends AppCompatActivity {
         List<SettingsItem> settingsList = new ArrayList<>();
         settingsList.add(new SettingsItem(R.drawable.ic_network, "Network & internet", "Wi-Fi, mobile, and data usage"));
         settingsList.add(new SettingsItem(R.drawable.ic_bluetooth, "Connected devices", "Bluetooth"));
-        settingsList.add(new SettingsItem(R.drawable.ic_apps, "Apps & notifications", "Recent apps, default apps"));
+        settingsList.add(new SettingsItem(R.drawable.ic_apps, "Apps", "Recent apps, default apps"));
+        settingsList.add(new SettingsItem(R.drawable.ic_notifications, "Notifications", "Notifications history, conversations"));
         settingsList.add(new SettingsItem(R.drawable.ic_battery, "Battery", "100%"));
-        settingsList.add(new SettingsItem(R.drawable.ic_display, "Display", "Wallpaper, sleep, font size"));
-        settingsList.add(new SettingsItem(R.drawable.ic_sound, "Sound", "Volume, vibration, Do Not Disturb"));
         settingsList.add(new SettingsItem(R.drawable.ic_storage, "Storage", "81% used - 2.98 GB free"));
-        settingsList.add(new SettingsItem(R.drawable.ic_privacy, "Privacy", "Permissions, account activity, personal data"));
+        settingsList.add(new SettingsItem(R.drawable.ic_sound, "Sound", "Volume, vibration, Do Not Disturb"));
+        settingsList.add(new SettingsItem(R.drawable.ic_display, "Display & touch", "Wallpaper, sleep, font size"));
+        settingsList.add(new SettingsItem(R.drawable.ic_privacy, "Security & Privacy", "Permissions, account activity, personal data"));
         settingsList.add(new SettingsItem(R.drawable.ic_location, "Location", "On - 4 apps have access to location"));
 
         SettingsAdapter adapter = new SettingsAdapter(settingsList);
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new SettingsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                switch (position) {
+                    case 0: // Network & internet
+                        startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
+                        break;
+                    case 3: // Notifications
+                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
+                        break;
+                    // Add more cases for other items if needed
+                }
+            }
+        });
     }
 }
