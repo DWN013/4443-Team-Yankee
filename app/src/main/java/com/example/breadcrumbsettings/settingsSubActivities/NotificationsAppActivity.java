@@ -2,7 +2,6 @@ package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +13,14 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.breadcrumbsettings.MainSettingsActivity;
 import com.example.breadcrumbsettings.R;
 
-public class NotificationsActivity extends AppCompatActivity {
+public class NotificationsAppActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notifications);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_notifications_app);
+
 
         // fetch the toolbar so i can add functionality to the back button
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -31,18 +32,10 @@ public class NotificationsActivity extends AppCompatActivity {
         // set on click listener for the back button being pressed
         toolbar.setNavigationOnClickListener(v -> {
             // send the user back to the apps and notifications activity
-            Intent intent = new Intent(NotificationsActivity.this, MainSettingsActivity.class);
+            Intent intent = new Intent(NotificationsAppActivity.this, NotificationsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish(); // Close the current activity
-        });
-
-        // set on click listener for app notifications being pressed
-        TextView appNotifications = findViewById(R.id.app_notifications);
-        appNotifications.setOnClickListener(v -> {
-            // Launch new activity when "App notifications" is clicked
-            Intent intent = new Intent(NotificationsActivity.this, NotificationsAppActivity.class);
-            startActivity(intent);
         });
     }
 }
