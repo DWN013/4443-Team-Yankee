@@ -30,7 +30,7 @@ public class NotificationsActivity extends AppCompatActivity {
         // set on click listener for the back button being pressed
         toolbar.setNavigationOnClickListener(v -> {
             // send the user back to the apps and notifications activity
-            Intent intent = new Intent(NotificationsActivity.this, AppsAndNotificationsActivity.class);
+            Intent intent = new Intent(NotificationsActivity.this, MainSettingsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish(); // Close the current activity

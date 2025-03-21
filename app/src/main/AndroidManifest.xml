@@ -19,7 +19,7 @@
             android:name=".settingsSubActivities.NotificationsActivity"
             android:exported="false" />
         <activity
-            android:name=".settingsSubActivities.AppsAndNotificationsActivity"
+            android:name=".settingsSubActivities.AppsActivity"
             android:exported="false" />
         <activity
             android:name=".settingsSubActivities.NetworksActivity"
