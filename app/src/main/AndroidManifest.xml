@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BreadcrumbSettings"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".settingsSubActivities.SoundActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".settingsSubActivities.SoundActivity"
+            android:exported="false" />
         <activity
             android:name=".settingsSubActivities.NotificationsActivity"
             android:exported="false" />
