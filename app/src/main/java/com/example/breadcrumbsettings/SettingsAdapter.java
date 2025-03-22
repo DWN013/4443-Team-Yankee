@@ -14,7 +14,16 @@ import java.util.List;
 
 public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.ViewHolder> {
 
-    private final List<SettingsItem> settingsList;
+    private List<SettingsItem> settingsList;
+    private OnItemClickListener onItemClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        onItemClickListener = listener;
+    }
 
     public SettingsAdapter(List<SettingsItem> settingsList) {
         this.settingsList = settingsList;
@@ -23,17 +32,16 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_settings, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_settings, parent, false);
+        return new ViewHolder(view, onItemClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SettingsItem item = settingsList.get(position);
-        holder.icon.setImageResource(item.getIconResId());
-        holder.title.setText(item.getTitle());
-        holder.subtitle.setText(item.getSubtitle());
+        SettingsItem currentItem = settingsList.get(position);
+        holder.icon.setImageResource(currentItem.getIconResId());
+        holder.title.setText(currentItem.getTitle());
+        holder.subtitle.setText(currentItem.getSubtitle());
     }
 
     @Override
@@ -41,15 +49,29 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.ViewHo
         return settingsList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView icon;
-        TextView title, subtitle;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ViewHolder(View itemView) {
+        public ImageView icon;
+        public TextView title;
+        public TextView subtitle;
+
+        public ViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             icon = itemView.findViewById(R.id.icon);
             title = itemView.findViewById(R.id.title);
             subtitle = itemView.findViewById(R.id.subtitle);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

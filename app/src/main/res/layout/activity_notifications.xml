@@ -39,9 +39,11 @@
                 android:paddingTop="16dp"
                 android:text="Manage"
                 android:textSize="14sp"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
+                android:id="@+id/app_notifications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="App notifications"
@@ -88,7 +90,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:text="Conversation"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -137,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:text="Privacy"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -154,6 +158,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
 
+            <!--section for notifications on lock screen text and subtext-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,6 +171,67 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:text="Hide silent conversations and notifications"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+
+            <!-- show the notifications tab that includes conversations and bubbles-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:text="General"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <!--section for do not disturb text and subtext-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Do Not Disturb"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Off"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+
+            <!--section for flash notifications text and subtext-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flash notifications"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Off"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            <!--section for advanced app usages-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Advanced"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Advanced features"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
         </LinearLayout>
