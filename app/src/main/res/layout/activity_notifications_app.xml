@@ -16,12 +16,20 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/baseline_arrow_back_24"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="App notifications"
+            app:title="Notifications"
             app:titleTextColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:text="   App notifications"
+            android:textSize="30dp" />
 
         <!-- show the list where they can toggle on or off -->
         <LinearLayout
