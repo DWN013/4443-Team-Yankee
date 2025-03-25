@@ -2,6 +2,7 @@ package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class SoundActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sound);
+
         media_slider = findViewById(R.id.media_slider);
         call_slider = findViewById(R.id.call_slider);
         ring_slider = findViewById(R.id.ring_slider);
@@ -36,15 +38,20 @@ public class SoundActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
         // set on click listener for the back button being pressed
         toolbar.setNavigationOnClickListener(v -> {
             // send the user back to the main activity
             Intent intent = new Intent(SoundActivity.this, MainSettingsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
-            finish(); // Close the current activity
+            finish(); // close the current activity
         });
 
+        // set on click listener for dnd being pressed
+        TextView dnd = findViewById(R.id.dnd);
+        dnd.setOnClickListener(v -> {
+            Intent intent = new Intent(SoundActivity.this, SoundDNDActivity.class);
+            startActivity(intent);
+        });
     }
 }
