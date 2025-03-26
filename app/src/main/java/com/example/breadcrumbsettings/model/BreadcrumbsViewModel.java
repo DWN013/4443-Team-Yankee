@@ -25,10 +25,12 @@ public class BreadcrumbsViewModel extends ViewModel {
         }
     }
 
-    public void removeLastBreadcrumb() {
+    public void removeBreadcrumbsAfter(int position) {
         Stack<String> currentBreadcrumbs = breadcrumbs.getValue();
-        if (currentBreadcrumbs != null && !currentBreadcrumbs.isEmpty()) {
-            currentBreadcrumbs.pop();
+        if (currentBreadcrumbs != null) {
+            while (currentBreadcrumbs.size() > position + 1) {
+                currentBreadcrumbs.pop();
+            }
             breadcrumbs.setValue(currentBreadcrumbs);
         }
     }
