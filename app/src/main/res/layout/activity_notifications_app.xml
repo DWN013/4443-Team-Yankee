@@ -11,7 +11,7 @@
         android:orientation="vertical"
         tools:context=".settingsSubActivities.NotificationsActivity">
 
-        <!-- part to show toolbar and app notifications title within in, along with back button to take user back to the apps and notifications screen-->
+        <!-- part to show toolbar and app notifications title within in, along with back button to take user back to the notifications screen-->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
