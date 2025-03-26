@@ -43,5 +43,12 @@ public class NotificationsActivity extends AppCompatActivity {
             Intent intent = new Intent(NotificationsActivity.this, NotificationsAppActivity.class);
             startActivity(intent);
         });
+
+        // set on click listener for notifications history being pressed
+        TextView history_notifications = findViewById(R.id.history_notifications);
+        history_notifications.setOnClickListener(v -> {
+            Intent intent = new Intent(NotificationsActivity.this, NotificationsHistoryActivity.class);
+            startActivity(intent);
+        });
     }
 }
