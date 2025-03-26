@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeedf4"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,16 +13,16 @@
         android:orientation="vertical"
         tools:context=".settingsSubActivities.NotificationsActivity">
 
-
         <!-- part to show toolbar and sound title within in, along with back button to take user back to the main-->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
+            android:background="#eeedf4"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="#eeedf4" />
 
         <TextView
             android:layout_width="wrap_content"
