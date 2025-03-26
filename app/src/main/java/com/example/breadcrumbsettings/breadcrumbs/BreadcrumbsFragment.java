@@ -17,7 +17,7 @@ import com.example.breadcrumbsettings.R;
 import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 import java.util.Stack;
 
-public class BreadcrumbsFragment extends Fragment {
+public class BreadcrumbsFragment extends Fragment implements BreadcrumbsAdapter.BreadcrumbClickListener {
     private BreadcrumbsViewModel breadcrumbsViewModel;
     private RecyclerView breadcrumbsRecyclerView;
     private BreadcrumbsAdapter breadcrumbsAdapter;
@@ -29,7 +29,7 @@ public class BreadcrumbsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_breadcrumbs, container, false);
         breadcrumbsRecyclerView = view.findViewById(R.id.breadcrumbs_recycler_view);
         breadcrumbsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        breadcrumbsAdapter = new BreadcrumbsAdapter();
+        breadcrumbsAdapter = new BreadcrumbsAdapter(this);
         breadcrumbsRecyclerView.setAdapter(breadcrumbsAdapter);
         Log.d(TAG, "BreadcrumbsFragment view created");
         return view;
@@ -46,5 +46,12 @@ public class BreadcrumbsFragment extends Fragment {
     private void updateBreadcrumbs(Stack<String> breadcrumbs) {
         breadcrumbsAdapter.setBreadcrumbs(breadcrumbs);
         Log.d(TAG, "Breadcrumbs updated: " + breadcrumbs);
+    }
+
+    @Override
+    public void onBreadcrumbClick(int position) {
+        // Handle breadcrumb click
+        breadcrumbsViewModel.removeBreadcrumbsAfter(position);
+        Log.d(TAG, "Breadcrumb clicked: " + position);
     }
 }
