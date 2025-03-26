@@ -41,6 +41,9 @@
             android:name=".settingsSubActivities.AppsActivity"
             android:exported="false" />
         <activity
+            android:name=".settingsSubActivities.DisplayActivity"
+            android:exported="false" />
+        <activity
             android:name=".settingsSubActivities.NetworksActivity"
             android:exported="false" />
         <activity

@@ -12,18 +12,24 @@
         tools:context=".settingsSubActivities.DisplayActivity">
 
         <!-- back button to take user back to the settings screen-->
-
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/baseline_arrow_back_24"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Display &amp; Touch"
+            app:title="Notifications"
             app:titleTextColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:text="   Display &amp; Touch"
+            android:textSize="30dp" />
 
         <!-- view for brightness -->
         <LinearLayout
@@ -82,7 +88,8 @@
                 android:layout_height="wrap_content"
                 android:text="Lock screen"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/lockscreen_display"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -255,7 +262,8 @@
                 android:layout_height="wrap_content"
                 android:text="Touch Sensitivity"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/touchsensitivity_display"/>
 
             <TextView
                 android:layout_width="match_parent"
