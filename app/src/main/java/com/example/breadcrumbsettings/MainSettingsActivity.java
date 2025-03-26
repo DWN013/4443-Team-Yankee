@@ -12,11 +12,13 @@ import androidx.core.view.WindowInsetsCompat;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
+import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 import com.example.breadcrumbsettings.model.SettingsItem;
 import com.example.breadcrumbsettings.settingsSubActivities.AppsActivity;
 import com.example.breadcrumbsettings.settingsSubActivities.DisplayActivity;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainSettingsActivity extends AppCompatActivity {
+    private BreadcrumbsViewModel breadcrumbsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class MainSettingsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
+        showBreadcrumbsFragment();
 
         RecyclerView recyclerView = findViewById(R.id.settings_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
