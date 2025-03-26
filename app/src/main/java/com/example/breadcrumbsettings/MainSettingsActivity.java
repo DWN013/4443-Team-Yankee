@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
@@ -31,6 +33,7 @@ import java.util.List;
 
 public class MainSettingsActivity extends AppCompatActivity {
     private BreadcrumbsViewModel breadcrumbsViewModel;
+    private static final String TAG = "MainSettingsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class MainSettingsActivity extends AppCompatActivity {
             return insets;
         });
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
+        Log.d(TAG, "BreadcrumbsViewModel initialized");
+
         showBreadcrumbsFragment();
 
         RecyclerView recyclerView = findViewById(R.id.settings_recycler_view);
@@ -68,27 +73,35 @@ public class MainSettingsActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 switch (position) {
                     case 0: // Network & internet
+                        breadcrumbsViewModel.addBreadcrumb("Network & internet");
                         startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
                         break;
 //                    case 1: // Connected Devices
+//                        breadcrumbsViewModel.addBreadcrumb("Connected devices");
 //                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
 //                        break;
                     case 2: // Apps
+                        breadcrumbsViewModel.addBreadcrumb("Apps");
                         startActivity(new Intent(MainSettingsActivity.this, AppsActivity.class));
                         break;
                     case 3: // Notifications
+                        breadcrumbsViewModel.addBreadcrumb("Notifications");
                         startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
                         break;
 //                    case 4: // Battery
+//                        breadcrumbsViewModel.addBreadcrumb("Battery");
 //                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
 //                        break;
 //                    case 5: // Storage
+//                        breadcrumbsViewModel.addBreadcrumb("Storage");
 //                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
 //                        break;
                     case 6: // Sound
+                        breadcrumbsViewModel.addBreadcrumb("Sound");
                         startActivity(new Intent(MainSettingsActivity.this, SoundActivity.class));
                         break;
                     case 7: // Display and Touch
+                        breadcrumbsViewModel.addBreadcrumb("Display & touch");
                         startActivity(new Intent(MainSettingsActivity.this, DisplayActivity.class));
                         break;
                     // Add more cases for other items if needed
@@ -103,5 +116,6 @@ public class MainSettingsActivity extends AppCompatActivity {
         BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
         fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
         fragmentTransaction.commit();
+        Log.d(TAG, "BreadcrumbsFragment added");
     }
 }
