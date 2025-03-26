@@ -10,6 +10,7 @@ public class BreadcrumbsViewModel extends ViewModel {
 
     public BreadcrumbsViewModel() {
         breadcrumbs = new MutableLiveData<>(new Stack<>());
+        addBreadcrumb("Home"); // Add "Home" breadcrumb by default
     }
 
     public LiveData<Stack<String>> getBreadcrumbs() {
