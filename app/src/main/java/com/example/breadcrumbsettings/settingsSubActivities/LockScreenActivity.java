@@ -2,6 +2,7 @@ package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,8 @@ public class LockScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_display_lockscreen);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -28,10 +30,16 @@ public class LockScreenActivity extends AppCompatActivity {
         }
         toolbar.setNavigationOnClickListener(v -> {
             // send user back to main activity
-            Intent intent = new Intent(LockScreenActivity.this, MainSettingsActivity.class);
+            Intent intent = new Intent(LockScreenActivity.this, DisplayActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish(); // Close the current activity
+        });
+
+        TextView shortcutDisplay = findViewById(R.id.shortcut_lockscreen);
+        shortcutDisplay.setOnClickListener(v -> {
+            Intent intent = new Intent(LockScreenActivity.this, ShortcutsActivity.class);
+            startActivity(intent);
         });
     }
 }

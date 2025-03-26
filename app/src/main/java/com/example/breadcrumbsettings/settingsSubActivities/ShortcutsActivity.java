@@ -18,7 +18,8 @@ public class ShortcutsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_display_lockscreen_shortcut);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -28,7 +29,7 @@ public class ShortcutsActivity extends AppCompatActivity {
         }
         toolbar.setNavigationOnClickListener(v -> {
             // send user back to main activity
-            Intent intent = new Intent(ShortcutsActivity.this, DisplayActivity.class);
+            Intent intent = new Intent(ShortcutsActivity.this, LockScreenActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish(); // Close the current activity

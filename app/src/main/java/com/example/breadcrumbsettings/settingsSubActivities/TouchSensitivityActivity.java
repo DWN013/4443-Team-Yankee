@@ -17,7 +17,8 @@ public class TouchSensitivityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_display_touchsensitivity);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
