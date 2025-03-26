@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -11,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BreadcrumbSettings"
         tools:targetApi="31">
-
+        <activity
+            android:name=".settingsSubActivities.ScreenTimeoutActivity"
+            android:exported="false" />
         <activity
             android:name=".settingsSubActivities.NotificationsHistoryActivity"
             android:exported="false" />
@@ -49,7 +52,6 @@
         <activity
             android:name=".settingsSubActivities.NetworksActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsSubActivities.WifiDetailActivity"
             android:exported="false" />
@@ -62,33 +64,27 @@
         <activity
             android:name=".settingsSubActivities.HotspotDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsSubActivities.SecurityAndPrivacyActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsSubActivities.LockScreenDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsSubActivities.EncryptionDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsSubActivities.FindMyDeviceDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsSubActivities.PermissionsDetailActivity"
             android:exported="false" />
-
-
         <activity
             android:name=".MainSettingsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

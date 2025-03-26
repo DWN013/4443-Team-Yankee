@@ -47,5 +47,11 @@ public class DisplayActivity extends AppCompatActivity {
             Intent intent = new Intent(DisplayActivity.this, TouchSensitivityActivity.class);
             startActivity(intent);
         });
+
+        TextView screentimeoutDisplay = findViewById(R.id.screentimeout_display);
+        screentimeoutDisplay.setOnClickListener(v -> {
+            Intent intent = new Intent(DisplayActivity.this, ScreenTimeoutActivity.class);
+            startActivity(intent);
+        });
     }
 }
