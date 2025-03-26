@@ -104,7 +104,8 @@
                 android:layout_height="wrap_content"
                 android:text="Screen Timeout"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/screentimeout_display"/>
 
             <TextView
                 android:layout_width="match_parent"
