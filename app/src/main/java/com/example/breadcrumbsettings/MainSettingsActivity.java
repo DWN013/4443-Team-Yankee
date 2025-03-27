@@ -46,7 +46,13 @@ public class MainSettingsActivity extends AppCompatActivity {
             return insets;
         });
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
-        Log.d(TAG, "BreadcrumbsViewModel initialized");
+        //Log.d(TAG, "BreadcrumbsViewModel initialized");
+
+        // Deserialize breadcrumbs if present
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
+        }
 
         showBreadcrumbsFragment();
 
@@ -86,7 +92,9 @@ public class MainSettingsActivity extends AppCompatActivity {
                         break;
                     case 3: // Notifications
                         breadcrumbsViewModel.addBreadcrumb("Notifications");
-                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
+                        Intent intent = new Intent(MainSettingsActivity.this, NotificationsActivity.class);
+                        intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
+                        startActivity(intent);
                         break;
 //                    case 4: // Battery
 //                        breadcrumbsViewModel.addBreadcrumb("Battery");
@@ -116,6 +124,5 @@ public class MainSettingsActivity extends AppCompatActivity {
         BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
         fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
         fragmentTransaction.commit();
-        Log.d(TAG, "BreadcrumbsFragment added");
     }
 }
