@@ -21,7 +21,8 @@
             app:navigationIcon="@drawable/baseline_arrow_back_24"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Notifications"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextColor="@android:color/white"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,17 +45,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
                 android:text="Brightness"
                 android:textSize="14sp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:textColor="#000080"
+                android:paddingBottom="16sp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Brightness level"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -79,16 +80,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
                 android:text="Lock Display"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#000080"
+                android:paddingBottom="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lock screen"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 android:id="@+id/lockscreen_display"/>
 
             <TextView
@@ -103,8 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Screen Timeout"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 android:id="@+id/screentimeout_display"/>
 
             <TextView
@@ -129,25 +130,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
                 android:text="Appearance"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#000080"
+                android:paddingBottom="16sp"/>
+
             <!--    linear layout for the switch to  dark theme    -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Dark Theme"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp" />
 
                 <Switch
                     android:id="@+id/darkThemeSwitch"
@@ -159,7 +160,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="16dp"
                 android:text="Control which apps and devices can read notifications"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
@@ -168,8 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sceen Saver"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -183,16 +183,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Display size and text"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="15dp"/>
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Navigation mode"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -214,24 +212,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
                 android:text="Color"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#000080"
+                android:paddingBottom="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Colors"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="15dp"/>
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Color contrast"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -254,16 +252,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
                 android:text="Touch"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#000080"
+                android:paddingBottom="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Touch Sensitivity"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 android:id="@+id/touchsensitivity_display"/>
 
             <TextView
@@ -286,16 +285,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
                 android:text="Other display controls"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="#000080"
+                android:paddingBottom="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Auto-rotate screen"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
