@@ -71,6 +71,7 @@ public class DisplayActivity extends AppCompatActivity {
         TextView screentimeoutDisplay = findViewById(R.id.screentimeout_display);
         screentimeoutDisplay.setOnClickListener(v -> {
             Intent intent = new Intent(DisplayActivity.this, ScreenTimeoutActivity.class);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
     }

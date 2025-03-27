@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,196 +7,210 @@
     android:layout_height="match_parent"
     tools:context=".settingsSubActivities.LockScreenActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Notifications"
+        app:titleTextColor="@android:color/white" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Notifications"
-            app:titleTextColor="@android:color/white" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="30dp"
-            android:text="  Lock Screen"
-            android:textSize="30sp"
-            android:paddingBottom="20dp"/>
-
-        <TextView
-            android:id="@+id/what_to_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="What to show"
-            android:textColor="#000080"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Privacy"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:paddingLeft="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show all notification content"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/breadcrumbs_container">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add users from lock screen"
-                android:textSize="20sp"
-                android:textColor="#000000" />
-
-            <Switch
-                android:id="@+id/switch_add_users"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="false"
-                android:paddingRight="16dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add text on lock screen"
-            android:textSize="20sp"
-            android:textColor="#CCCCCC"
-            android:paddingLeft="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="None"
-            android:textSize="14sp"
-            android:textColor="#CCCCCC"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingLeft="16dp">
+                android:layout_gravity="left"
+                android:layout_marginTop="30dp"
+                android:text="  Lock Screen"
+                android:textSize="30sp"
+                android:paddingBottom="20dp"/>
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Use device controls"
-                android:textSize="20sp"
-                android:textColor="#000000" />
-
-            <Switch
-                android:id="@+id/switch_device_controls"
+                android:id="@+id/what_to_show"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="false"
-                android:paddingRight="16dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Without unlocking your phone"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shortcuts"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:paddingLeft="16dp"
-            android:id="@+id/shortcut_lockscreen"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="QR code scanner, Camera"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingLeft="16dp">
+                android:text="What to show"
+                android:textColor="#000080"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Dynamic clock"
-                android:textSize="20sp"
-                android:textColor="#000000" />
-
-            <Switch
-                android:id="@+id/switch_dynamic_clock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:paddingRight="16dp"/>
+                android:text="Privacy"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show all notification content"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Add users from lock screen"
+                    android:textSize="20sp"
+                    android:textColor="#000000" />
+
+                <Switch
+                    android:id="@+id/switch_add_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:paddingRight="16dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add text on lock screen"
+                android:textSize="20sp"
+                android:textColor="#CCCCCC"
+                android:paddingLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Use device controls"
+                    android:textSize="20sp"
+                    android:textColor="#000000" />
+
+                <Switch
+                    android:id="@+id/switch_device_controls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:paddingRight="16dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Without unlocking your phone"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shortcuts"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingLeft="16dp"
+                android:id="@+id/shortcut_lockscreen"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QR code scanner, Camera"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Dynamic clock"
+                    android:textSize="20sp"
+                    android:textColor="#000000" />
+
+                <Switch
+                    android:id="@+id/switch_dynamic_clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingRight="16dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clock size changes according to lock screen content"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Now Playing"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Identify songs playing nearby"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:paddingLeft="16dp"/>
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clock size changes according to lock screen content"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Now Playing"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:paddingLeft="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Identify songs playing nearby"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:paddingLeft="16dp"/>
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>
