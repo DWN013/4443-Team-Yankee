@@ -2,7 +2,7 @@
     android:shape="rectangle">
 
     <!-- Your desired background color (example: purple_500) -->
-    <solid android:color="#42598c" />
+    <solid android:color="#5A78B5" />
 
     <!-- Rounded corners -->
     <corners android:radius="30dp" />
