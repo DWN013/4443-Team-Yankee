@@ -11,16 +11,34 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import androidx.lifecycle.ViewModelProvider;
 import com.example.breadcrumbsettings.MainSettingsActivity;
 import com.example.breadcrumbsettings.R;
+import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
+import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class ShortcutsActivity extends AppCompatActivity {
+
+    private BreadcrumbsViewModel breadcrumbsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_display_lockscreen_shortcut);
+
+        breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
+
+        // Deserialize breadcrumbs if present
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
+        }
+        breadcrumbsViewModel.addBreadcrumb("Shortcuts", DisplayActivity.class);
+
+        showBreadcrumbsFragment();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -32,11 +50,19 @@ public class ShortcutsActivity extends AppCompatActivity {
             // send user back to main activity
             Intent intent = new Intent(ShortcutsActivity.this, LockScreenActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
             finish(); // Close the current activity
         });
 
         TextView leftTab = findViewById(R.id.tab_left);
         TextView rightTab = findViewById(R.id.tab_right);
+    }
+    private void showBreadcrumbsFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
+        fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
+        fragmentTransaction.commit();
     }
 }
