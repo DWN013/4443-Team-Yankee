@@ -79,7 +79,7 @@ public class MainSettingsActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 switch (position) {
                     case 0: // Network & internet
-                        breadcrumbsViewModel.addBreadcrumb("Network & internet");
+                        breadcrumbsViewModel.addBreadcrumb("Network & internet", NetworksActivity.class);
                         startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
                         break;
 //                    case 1: // Connected Devices
@@ -87,11 +87,11 @@ public class MainSettingsActivity extends AppCompatActivity {
 //                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
 //                        break;
                     case 2: // Apps
-                        breadcrumbsViewModel.addBreadcrumb("Apps");
+                        breadcrumbsViewModel.addBreadcrumb("Apps", AppsActivity.class);
                         startActivity(new Intent(MainSettingsActivity.this, AppsActivity.class));
                         break;
                     case 3: // Notifications
-                        breadcrumbsViewModel.addBreadcrumb("Notifications");
+                        breadcrumbsViewModel.addBreadcrumb("Notifications", NotificationsActivity.class);
                         Intent intent = new Intent(MainSettingsActivity.this, NotificationsActivity.class);
                         intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
                         startActivity(intent);
@@ -105,11 +105,11 @@ public class MainSettingsActivity extends AppCompatActivity {
 //                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
 //                        break;
                     case 6: // Sound
-                        breadcrumbsViewModel.addBreadcrumb("Sound");
+                        breadcrumbsViewModel.addBreadcrumb("Sound", SoundActivity.class);
                         startActivity(new Intent(MainSettingsActivity.this, SoundActivity.class));
                         break;
                     case 7: // Display and Touch
-                        breadcrumbsViewModel.addBreadcrumb("Display & touch");
+                        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
                         startActivity(new Intent(MainSettingsActivity.this, DisplayActivity.class));
                         break;
                     // Add more cases for other items if needed
