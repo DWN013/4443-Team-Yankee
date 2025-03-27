@@ -77,6 +77,9 @@ public class MainSettingsActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new SettingsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                // Clear the breadcrumb path before navigating to a new tab
+                breadcrumbsViewModel.clearBreadcrumbs();
+
                 switch (position) {
                     case 0: // Network & internet
                         breadcrumbsViewModel.addBreadcrumb("Network & internet", NetworksActivity.class);
