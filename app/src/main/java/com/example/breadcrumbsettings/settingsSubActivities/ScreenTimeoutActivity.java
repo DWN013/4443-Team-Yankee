@@ -28,7 +28,7 @@ public class ScreenTimeoutActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         toolbar.setNavigationOnClickListener(v -> {
-            // send user back to main activity
+            // send user back to display activity
             Intent intent = new Intent(ScreenTimeoutActivity.this, DisplayActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
