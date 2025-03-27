@@ -1,302 +1,317 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#eeedf4"
+    tools:context=".settingsSubActivities.DisplayActivity">
 
-    <LinearLayout
+    <!-- back button to take user back to the settings screen-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".settingsSubActivities.DisplayActivity">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Notifications"
+        app:titleTextColor="@android:color/white" />
 
-        <!-- back button to take user back to the settings screen-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Notifications"
-            app:titleTextColor="@android:color/white"
-            />
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@id/toolbar"
+       android:layout_above="@+id/breadcrumbs_container">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="20dp"
-            android:text="   Display &amp; Touch"
-            android:textSize="30dp" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           tools:context=".settingsSubActivities.DisplayActivity">
 
-        <!-- view for brightness -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="10dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="left"
+               android:layout_marginTop="20dp"
+               android:text="   Display &amp; Touch"
+               android:textSize="30dp" />
 
-            <!-- adjusting the brightness levels-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Brightness"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000080"
-                android:paddingBottom="16sp"/>
+           <!-- view for brightness -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:clickable="true"
+               android:focusable="true"
+               android:orientation="vertical"
+               android:padding="10dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Brightness level"
-                android:textSize="20sp" />
+               <!-- adjusting the brightness levels-->
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Brightness"
+                   android:textSize="14sp"
+                   android:layout_marginTop="15dp"
+                   android:textColor="#000080"
+                   android:paddingBottom="16sp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Adjust brightness of device"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Brightness level"
+                   android:textSize="20sp" />
 
-        </LinearLayout>
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Adjust brightness of device"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
 
-
-        <!-- next view of the lock display -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <!-- for adjusting lockscreen and screen timeout-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lock Display"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000080"
-                android:paddingBottom="16sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lock screen"
-                android:textSize="20sp"
-                android:id="@+id/lockscreen_display"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="Show all notification content"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Screen Timeout"
-                android:textSize="20sp"
-                android:id="@+id/screentimeout_display"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Duration of inactivity where the phone turns off"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-        </LinearLayout>
+           </LinearLayout>
 
 
-        <!-- next view of appearance of the UI displaly -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="12dp">
+           <!-- next view of the lock display -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:clickable="true"
+               android:focusable="true"
+               android:orientation="vertical"
+               android:padding="12dp">
 
-            <!-- adjusts the theme, screen saves, size and text, and navigation-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Appearance"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000080"
-                android:paddingBottom="16sp"/>
+               <!-- for adjusting lockscreen and screen timeout-->
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Lock Display"
+                   android:textSize="14sp"
+                   android:layout_marginTop="15dp"
+                   android:textColor="#000080"
+                   android:paddingBottom="16sp" />
 
-            <!--    linear layout for the switch to  dark theme    -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Lock screen"
+                   android:textSize="20sp"
+                   android:id="@+id/lockscreen_display"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Dark Theme"
-                    android:textSize="20sp" />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="15dp"
+                   android:text="Show all notification content"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
 
-                <Switch
-                    android:id="@+id/darkThemeSwitch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Screen Timeout"
+                   android:textSize="20sp"
+                   android:id="@+id/screentimeout_display"/>
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Duration of inactivity where the phone turns off"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
+           </LinearLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Control which apps and devices can read notifications"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
+           <!-- next view of appearance of the UI displaly -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:clickable="true"
+               android:focusable="true"
+               android:orientation="vertical"
+               android:padding="12dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sceen Saver"
-                android:textSize="20sp" />
+               <!-- adjusts the theme, screen saves, size and text, and navigation-->
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Appearance"
+                   android:textSize="14sp"
+                   android:layout_marginTop="15dp"
+                   android:textColor="#000080"
+                   android:paddingBottom="16sp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="Hide silent conversations and notifications"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
+               <!--    linear layout for the switch to  dark theme    -->
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Display size and text"
-                android:textSize="20sp"
-                android:layout_marginBottom="16dp"/>
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:text="Dark Theme"
+                       android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Navigation mode"
-                android:textSize="20sp"/>
+                   <Switch
+                       android:id="@+id/darkThemeSwitch"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+               </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gesture Navigation"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="10dp">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="16dp"
+                   android:text="Control which apps and devices can read notifications"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
 
-            <!-- manage colors of UI-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Color"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000080"
-                android:paddingBottom="16sp" />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Sceen Saver"
+                   android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Colors"
-                android:textSize="20sp"
-                android:layout_marginBottom="16dp"/>
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="15dp"
+                   android:text="Hide silent conversations and notifications"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Color contrast"
-                android:textSize="20sp" />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Display size and text"
+                   android:textSize="20sp"
+                   android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Increases contrast of icons and buttons to stand out more"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-        </LinearLayout>
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Navigation mode"
+                   android:textSize="20sp"/>
 
-        <!--    manages touch controls    <-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="10dp">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Gesture Navigation"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
+           </LinearLayout>
 
-            <!-- Increase sensitivity when screen protectors are on -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Touch"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000080"
-                android:paddingBottom="16sp" />
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:clickable="true"
+               android:focusable="true"
+               android:orientation="vertical"
+               android:padding="10dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Touch Sensitivity"
-                android:textSize="20sp"
-                android:id="@+id/touchsensitivity_display"/>
+               <!-- manage colors of UI-->
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Color"
+                   android:textSize="14sp"
+                   android:layout_marginTop="15dp"
+                   android:textColor="#000080"
+                   android:paddingBottom="16sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Adjust touch screen sensitivity"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-        </LinearLayout>
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Colors"
+                   android:textSize="20sp"
+                   android:layout_marginBottom="16dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="10dp">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Color contrast"
+                   android:textSize="20sp" />
 
-            <!-- other display settings -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Other display controls"
-                android:textSize="14sp"
-                android:layout_marginTop="15dp"
-                android:textColor="#000080"
-                android:paddingBottom="16sp" />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Increases contrast of icons and buttons to stand out more"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
+           </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Auto-rotate screen"
-                android:textSize="16sp" />
-        </LinearLayout>
+           <!--    manages touch controls    <-->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:clickable="true"
+               android:focusable="true"
+               android:orientation="vertical"
+               android:padding="10dp">
 
-    </LinearLayout>
-</ScrollView>
+               <!-- Increase sensitivity when screen protectors are on -->
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Touch"
+                   android:textSize="14sp"
+                   android:layout_marginTop="15dp"
+                   android:textColor="#000080"
+                   android:paddingBottom="16sp" />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Touch Sensitivity"
+                   android:textSize="20sp"
+                   android:id="@+id/touchsensitivity_display"/>
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Adjust touch screen sensitivity"
+                   android:textColor="@android:color/darker_gray"
+                   android:textSize="14sp" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:clickable="true"
+               android:focusable="true"
+               android:orientation="vertical"
+               android:padding="10dp">
+
+               <!-- other display settings -->
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Other display controls"
+                   android:textSize="14sp"
+                   android:layout_marginTop="15dp"
+                   android:textColor="#000080"
+                   android:paddingBottom="16sp" />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Auto-rotate screen"
+                   android:textSize="16sp" />
+           </LinearLayout>
+       </LinearLayout>
+   </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+
+</RelativeLayout>
