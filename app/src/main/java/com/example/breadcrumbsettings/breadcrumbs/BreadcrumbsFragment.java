@@ -1,5 +1,6 @@
 package com.example.breadcrumbsettings.breadcrumbs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,8 +51,14 @@ public class BreadcrumbsFragment extends Fragment implements BreadcrumbsAdapter.
 
     @Override
     public void onBreadcrumbClick(int position) {
-        // Handle breadcrumb click
-        breadcrumbsViewModel.removeBreadcrumbsAfter(position);
+        // Navigate back to the corresponding activity
+        String breadcrumb = breadcrumbsViewModel.getBreadcrumbs().getValue().get(position);
+        Class<?> activityClass = breadcrumbsViewModel.getActivityForBreadcrumb(breadcrumb);
+        if (activityClass != null) {
+            Intent intent = new Intent(getContext(), activityClass);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
         Log.d(TAG, "Breadcrumb clicked: " + position);
     }
 }
