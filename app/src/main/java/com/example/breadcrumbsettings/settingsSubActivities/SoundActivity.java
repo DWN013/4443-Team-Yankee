@@ -36,7 +36,6 @@ public class SoundActivity extends AppCompatActivity {
         notification_slider = findViewById(R.id.notification_slider);
         alarm_slider = findViewById(R.id.alarm_slider);
 
-
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
 
         // Deserialize breadcrumbs if present
