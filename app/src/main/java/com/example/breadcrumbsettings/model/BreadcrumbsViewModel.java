@@ -27,6 +27,10 @@ public class BreadcrumbsViewModel extends ViewModel {
     public void addBreadcrumb(String breadcrumb, Class<?> activityClass) {
         Stack<String> currentBreadcrumbs = breadcrumbs.getValue();
         if (currentBreadcrumbs != null) {
+            // Remove duplicates or incorrect paths
+            if (!currentBreadcrumbs.isEmpty() && currentBreadcrumbs.peek().equals(breadcrumb)) {
+                return;
+            }
             currentBreadcrumbs.push(breadcrumb);
             breadcrumbs.setValue(currentBreadcrumbs);
             breadcrumbActivities.put(breadcrumb, activityClass);
@@ -64,5 +68,11 @@ public class BreadcrumbsViewModel extends ViewModel {
             }
         }
         breadcrumbs.setValue(newBreadcrumbs);
+    }
+
+    // Method to clear breadcrumbs
+    public void clearBreadcrumbs() {
+        breadcrumbs.setValue(new Stack<>()); // Clear the breadcrumbs by setting a new empty stack
+        addBreadcrumb("Home", MainSettingsActivity.class); // Add "Home" breadcrumb after clearing
     }
 }
