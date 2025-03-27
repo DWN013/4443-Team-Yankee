@@ -1,101 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eeedf4">
+    android:background="#eeedf4"
+    tools:context=".settingsSubActivities.NotificationsActivity">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".settingsSubActivities.NotificationsActivity">
+        android:layout_above="@+id/breadcrumbs_container"
+        android:background="#eeedf4">
 
-        <!-- part to show toolbar and app notifications title within in, along with back button to take user back to the notifications screen-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#eeedf4"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="#eeedf4" />
-
-        <!-- title -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="20dp"
-            android:text="   Notification history"
-            android:textSize="30dp" />
-
-        <!-- layout for the toggle switch and text for use notification history-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/oval"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:orientation="vertical"
+            tools:context=".settingsSubActivities.NotificationsActivity">
 
-            <!-- the label -->
+            <!-- part to show toolbar and app notifications title within in, along with back button to take user back to the notifications screen-->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#eeedf4"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextColor="#eeedf4" />
+
+            <!-- title -->
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Use notification history"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-            <!-- the switch -->
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switch_notification_history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <!-- layout for the icon and its text -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="178dp"
-            android:layout_marginBottom="48dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <!-- clock icon -->
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/baseline_history_24" />
-
-            <!-- text for status -->
-            <TextView
-                android:id="@+id/statusText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Notification history turned off"
-                android:textSize="16sp" />
+                android:layout_gravity="left"
+                android:layout_marginTop="20dp"
+                android:text="   Notification history"
+                android:textSize="30dp" />
 
-            <!-- sub text -->
-            <TextView
-                android:id="@+id/statusSubText"
-                android:layout_width="wrap_content"
+            <!-- layout for the toggle switch and text for use notification history-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/oval"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- the label -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Use notification history"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <!-- the switch -->
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch_notification_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- layout for the icon and its text -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="178dp"
+                android:layout_marginBottom="48dp"
                 android:gravity="center"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="Turn on notification history to see recent
+                android:orientation="vertical">
+
+                <!-- clock icon -->
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/baseline_history_24" />
+
+                <!-- text for status -->
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Notification history turned off"
+                    android:textSize="16sp" />
+
+                <!-- sub text -->
+                <TextView
+                    android:id="@+id/statusSubText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Turn on notification history to see recent
                 notifications and snoozed notifications"
-                android:textSize="14sp" />
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+    <!-- Breadcrumbs container -->
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+</RelativeLayout>
