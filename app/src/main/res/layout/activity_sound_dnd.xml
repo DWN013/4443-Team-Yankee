@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#eeedf4"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#eeedf4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="60dp"
             android:text=" Do Not Disturb"
-            android:textSize="30dp" />
+            android:textSize="36dp" />
 
         <!-- first view of the notifications, specifically the manage notifications part -->
         <LinearLayout
@@ -47,6 +47,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:paddingTop="16dp"
                 android:text="Only get notified by important people and apps"
@@ -57,17 +58,19 @@
                 android:id="@+id/dndButton"
                 android:layout_width="110dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:padding="0dp"
+                android:backgroundTint="#1A3B78"
                 android:text="Turn on now" />
 
             <!-- show the tab for who can interrupt dnd and the associated entities below-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="24dp"
                 android:paddingTop="16dp"
                 android:text="What can interrupt Do Not Disturb"
+                android:textColor="#1A3B78"
                 android:textSize="14sp" />
 
             <TextView
@@ -79,7 +82,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="24dp"
                 android:text="Some people can interrupt"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
@@ -93,7 +96,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="24dp"
                 android:text="Google Play services can interrupt"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
@@ -107,14 +110,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="24dp"
                 android:text="Alarms and media can interrupt"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
         </LinearLayout>
 
-
-        <!-- next view of dnd, specifically the general dnd settings -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,6 +130,7 @@
                 android:layout_marginBottom="20dp"
                 android:paddingTop="16dp"
                 android:text="General"
+                android:textColor="#1A3B78"
                 android:textSize="14sp" />
 
             <TextView
