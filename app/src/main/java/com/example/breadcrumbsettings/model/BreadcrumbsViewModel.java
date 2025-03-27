@@ -34,4 +34,23 @@ public class BreadcrumbsViewModel extends ViewModel {
             breadcrumbs.setValue(currentBreadcrumbs);
         }
     }
+
+    public String serializeBreadcrumbs() {
+        Stack<String> currentBreadcrumbs = breadcrumbs.getValue();
+        if (currentBreadcrumbs != null) {
+            return String.join(">", currentBreadcrumbs);
+        }
+        return "";
+    }
+
+    public void deserializeBreadcrumbs(String serializedBreadcrumbs) {
+        Stack<String> newBreadcrumbs = new Stack<>();
+        if (!serializedBreadcrumbs.isEmpty()) {
+            String[] breadcrumbArray = serializedBreadcrumbs.split(">");
+            for (String breadcrumb : breadcrumbArray) {
+                newBreadcrumbs.push(breadcrumb);
+            }
+        }
+        breadcrumbs.setValue(newBreadcrumbs);
+    }
 }
