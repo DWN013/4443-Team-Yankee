@@ -27,16 +27,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:text="  Lock Screen"
-            android:textSize="30dp" />
+            android:textSize="30sp"
+            android:paddingBottom="20dp"/>
 
         <TextView
             android:id="@+id/what_to_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="What to show"
-            android:textColor="#3F51B5"
+            android:textColor="#000080"
             android:textSize="14sp"
             android:layout_marginBottom="16dp"
             android:paddingLeft="16dp"/>
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Privacy"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:paddingLeft="16dp"/>
 
@@ -71,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Add users from lock screen"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textColor="#000000" />
 
             <Switch
@@ -86,7 +87,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add text on lock screen"
-            android:textSize="16sp"
+            android:textSize="20sp"
+            android:textColor="#CCCCCC"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"
+            android:textSize="14sp"
             android:textColor="#CCCCCC"
             android:layout_marginBottom="16dp"
             android:paddingLeft="16dp"/>
@@ -96,7 +105,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="16dp"
             android:paddingLeft="16dp">
 
             <TextView
@@ -104,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Use device controls"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textColor="#000000" />
 
             <Switch
@@ -128,16 +136,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Shortcuts"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textColor="#000000"
-            android:layout_marginBottom="16dp"
             android:paddingLeft="16dp"
             android:id="@+id/shortcut_lockscreen"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Device controls"
+            android:text="QR code scanner, Camera"
             android:textSize="14sp"
             android:textColor="#666666"
             android:layout_marginBottom="16dp"
@@ -148,7 +155,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="16dp"
             android:paddingLeft="16dp">
 
             <TextView
@@ -156,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Dynamic clock"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textColor="#000000" />
 
             <Switch
@@ -180,9 +186,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Now Playing"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textColor="#000000"
-            android:layout_marginBottom="8dp"
             android:paddingLeft="16dp"/>
 
         <TextView
@@ -191,7 +196,6 @@
             android:text="Identify songs playing nearby"
             android:textSize="14sp"
             android:textColor="#666666"
-            android:layout_marginBottom="32dp"
             android:paddingLeft="16dp"/>
     </LinearLayout>
 

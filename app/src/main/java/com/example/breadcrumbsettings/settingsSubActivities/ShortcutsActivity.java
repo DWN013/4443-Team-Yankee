@@ -2,6 +2,7 @@ package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,5 +35,8 @@ public class ShortcutsActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); // Close the current activity
         });
+
+        TextView leftTab = findViewById(R.id.tab_left);
+        TextView rightTab = findViewById(R.id.tab_right);
     }
 }
