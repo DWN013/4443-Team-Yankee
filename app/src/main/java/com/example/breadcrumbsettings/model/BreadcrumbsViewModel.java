@@ -3,25 +3,33 @@ package com.example.breadcrumbsettings.model;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.breadcrumbsettings.MainSettingsActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class BreadcrumbsViewModel extends ViewModel {
     private final MutableLiveData<Stack<String>> breadcrumbs;
+    private final Map<String, Class<?>> breadcrumbActivities;
 
     public BreadcrumbsViewModel() {
         breadcrumbs = new MutableLiveData<>(new Stack<>());
-        addBreadcrumb("Home"); // Add "Home" breadcrumb by default
+        breadcrumbActivities = new HashMap<>();
+        addBreadcrumb("Home", MainSettingsActivity.class); // Add "Home" breadcrumb by default
     }
 
     public LiveData<Stack<String>> getBreadcrumbs() {
         return breadcrumbs;
     }
 
-    public void addBreadcrumb(String breadcrumb) {
+    public void addBreadcrumb(String breadcrumb, Class<?> activityClass) {
         Stack<String> currentBreadcrumbs = breadcrumbs.getValue();
         if (currentBreadcrumbs != null) {
             currentBreadcrumbs.push(breadcrumb);
             breadcrumbs.setValue(currentBreadcrumbs);
+            breadcrumbActivities.put(breadcrumb, activityClass);
         }
     }
 
@@ -33,6 +41,10 @@ public class BreadcrumbsViewModel extends ViewModel {
             }
             breadcrumbs.setValue(currentBreadcrumbs);
         }
+    }
+
+    public Class<?> getActivityForBreadcrumb(String breadcrumb) {
+        return breadcrumbActivities.get(breadcrumb);
     }
 
     public String serializeBreadcrumbs() {
