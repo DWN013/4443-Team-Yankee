@@ -39,6 +39,8 @@ public class SoundDNDActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Sound", SoundActivity.class);
         breadcrumbsViewModel.addBreadcrumb("Do Not Disturb", SoundDNDActivity.class);
 
         showBreadcrumbsFragment();

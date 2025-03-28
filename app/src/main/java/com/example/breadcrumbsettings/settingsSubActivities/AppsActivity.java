@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class AppsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_apps);
 
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
@@ -33,7 +35,9 @@ public class AppsActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
+        breadcrumbsViewModel.clearBreadcrumbs();
         breadcrumbsViewModel.addBreadcrumb("Apps", AppsActivity.class);
+
 
         showBreadcrumbsFragment();
 
