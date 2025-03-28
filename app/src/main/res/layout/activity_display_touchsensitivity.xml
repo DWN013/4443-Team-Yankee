@@ -94,7 +94,6 @@
                 android:paddingLeft="16dp"/>
         </LinearLayout>
     </ScrollView>
-
     <FrameLayout
         android:id="@+id/breadcrumbs_container"
         android:layout_width="match_parent"
