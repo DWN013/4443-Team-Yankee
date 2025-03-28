@@ -39,6 +39,8 @@ public class NotificationsHistoryActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Notifications", NotificationsActivity.class);
         breadcrumbsViewModel.addBreadcrumb("Notification History", NotificationsHistoryActivity.class);
 
         showBreadcrumbsFragment();

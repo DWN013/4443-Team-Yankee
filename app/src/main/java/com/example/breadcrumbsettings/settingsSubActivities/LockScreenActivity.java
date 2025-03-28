@@ -36,7 +36,9 @@ public class LockScreenActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
-        breadcrumbsViewModel.addBreadcrumb("Lock Screen", DisplayActivity.class);
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("Lock Screen", LockScreenActivity.class);
 
         showBreadcrumbsFragment();
 
