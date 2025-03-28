@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Minimal Toolbar (no text, just a back arrow) -->
+        <!-- Minimal Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:background="?attr/colorSurface"
             android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:title="" />
+            app:title=""/>
 
         <!-- Large heading -->
         <TextView
@@ -28,12 +28,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="VPN Settings"
+            android:text="Device unlock"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary" />
 
-        <!-- Subtitle (optional) -->
+        <!-- Subtitle -->
         <TextView
             android:id="@+id/pageSubtitle"
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Manage or enable your VPN connections"
+            android:text="Configure lock screen settings"
             android:textSize="14sp"
             android:textColor="?android:attr/textColorSecondary" />
 
@@ -57,17 +57,17 @@
                 android:id="@+id/info_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="VPN: Disconnected&#10;Last Connected: 2 hours ago&#10;&#10;Available Profiles:&#10;• WorkVPN&#10;• PersonalVPN"
+                android:text="Screen lock: None&#10;Fingerprint/Face unlock: Not set&#10;&#10;Features:&#10;• Set screen lock method&#10;• Enable biometric unlock"
                 android:textSize="16sp" />
 
-            <!-- Switch to enable/disable VPN -->
+            <!-- Toggle Button -->
             <Switch
-                android:id="@+id/vpn_switch"
+                android:id="@+id/device_unlock_toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enable VPN"
-                android:minHeight="48dp"
-                android:layout_marginTop="20dp"/>
+                android:text="Enable Device Unlock"
+                android:layout_marginTop="20dp"
+                android:minHeight="48dp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

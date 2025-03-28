@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Minimal Toolbar (no text, just a back arrow) -->
+        <!-- Minimal Toolbar (back arrow, no title) -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -28,12 +28,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="VPN Settings"
+            android:text="App security"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary" />
 
-        <!-- Subtitle (optional) -->
+        <!-- Subtitle -->
         <TextView
             android:id="@+id/pageSubtitle"
             android:layout_width="match_parent"
@@ -41,33 +41,53 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Manage or enable your VPN connections"
+            android:text="Review and toggle app protection"
             android:textSize="14sp"
             android:textColor="?android:attr/textColorSecondary" />
 
-        <!-- Main content area -->
+        <!-- Large illustration card -->
+        <LinearLayout
+            android:id="@+id/illustration_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:background="?attr/colorSurface"
+            android:elevation="2dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/illustration_image"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_app_security_illustration"
+                android:contentDescription="App security illustration" />
+        </LinearLayout>
+
+        <!-- Info + Toggle -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_marginTop="12dp">
+            android:padding="16dp">
 
+            <!-- Information Text -->
             <TextView
                 android:id="@+id/info_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="VPN: Disconnected&#10;Last Connected: 2 hours ago&#10;&#10;Available Profiles:&#10;• WorkVPN&#10;• PersonalVPN"
+                android:text="Encryption Status: Encrypted&#10;Storage: Fully Encrypted&#10;&#10;Features:&#10;• View trusted credentials&#10;• Manage security certificates&#10;• Backup encryption keys"
                 android:textSize="16sp" />
 
-            <!-- Switch to enable/disable VPN -->
+            <!-- Toggle on its own line -->
             <Switch
-                android:id="@+id/vpn_switch"
+                android:id="@+id/app_security_toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enable VPN"
-                android:minHeight="48dp"
-                android:layout_marginTop="20dp"/>
+                android:text="Enable App Security"
+                android:layout_marginTop="20dp"
+                android:minHeight="48dp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
