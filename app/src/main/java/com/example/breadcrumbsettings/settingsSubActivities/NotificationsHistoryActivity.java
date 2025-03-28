@@ -7,8 +7,13 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.breadcrumbsettings.R;
+import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
+import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import org.w3c.dom.Text;
@@ -19,12 +24,26 @@ public class NotificationsHistoryActivity extends AppCompatActivity {
     private SwitchMaterial historySwitch;
     private TextView statusText, subText;
 
+    private BreadcrumbsViewModel breadcrumbsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_notifications_history);
+
+        breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
+
+        // Deserialize breadcrumbs if present
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
+        }
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Notifications", NotificationsActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("Notification History", NotificationsHistoryActivity.class);
+
+        showBreadcrumbsFragment();
 
         // fetch the toolbar so i can add functionality to the back button
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -63,5 +82,12 @@ public class NotificationsHistoryActivity extends AppCompatActivity {
                 subText.setText("Turn on notification history to see recent notifications and snoozed notifications");
             }
         });
+    }
+    private void showBreadcrumbsFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
+        fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
+        fragmentTransaction.commit();
     }
 }

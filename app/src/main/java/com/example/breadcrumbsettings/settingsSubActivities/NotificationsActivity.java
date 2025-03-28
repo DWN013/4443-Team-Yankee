@@ -60,6 +60,7 @@ public class NotificationsActivity extends AppCompatActivity {
         // set on click listener for app notifications being pressed
         TextView appNotifications = findViewById(R.id.app_notifications);
         appNotifications.setOnClickListener(v -> {
+            breadcrumbsViewModel.addBreadcrumb("App Notifications", NotificationsAppActivity.class);
             Intent intent = new Intent(NotificationsActivity.this, NotificationsAppActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
@@ -68,6 +69,7 @@ public class NotificationsActivity extends AppCompatActivity {
         // set on click listener for notifications history being pressed
         TextView history_notifications = findViewById(R.id.history_notifications);
         history_notifications.setOnClickListener(v -> {
+            breadcrumbsViewModel.addBreadcrumb("Notification History", NotificationsHistoryActivity.class);
             Intent intent = new Intent(NotificationsActivity.this, NotificationsHistoryActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
