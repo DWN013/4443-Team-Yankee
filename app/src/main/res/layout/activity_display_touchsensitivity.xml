@@ -7,84 +7,98 @@
     android:layout_height="match_parent"
     tools:context=".settingsSubActivities.TouchSensitivityActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Notifications"
+        app:titleTextColor="@android:color/white" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Notifications"
-            app:titleTextColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Touch Sensitivity"
-            android:textSize="35sp"
-            android:textColor="#000000"
-            android:layout_marginBottom="24dp"
-            android:paddingLeft="16dp"
-            android:layout_marginTop="24dp"/>
-
-        <TextView
-            android:id="@+id/what_to_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adjust touch screen sensitivity"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
-
-        <!-- Phone preview -->
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:src="@drawable/touchsensitivity"
-            android:scaleType="fitCenter"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="Phone preview"
-            android:layout_gravity="center_horizontal"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/breadcrumbs_container">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="5dp"
-            android:paddingLeft="16dp">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Screen protector mode"
-                android:textSize="16sp"
-                android:textColor="#000000" />
-
-            <Switch
-                android:id="@+id/switch_add_users"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="false"
-                android:paddingRight="16dp"/>
-        </LinearLayout>
+                android:text="Touch Sensitivity"
+                android:textSize="35sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="24dp"
+                android:paddingLeft="16dp"
+                android:layout_marginTop="24dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show all notification content"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/what_to_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adjust touch screen sensitivity"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+
+            <!-- Phone preview -->
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:src="@drawable/touchsensitivity"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="24dp"
+                android:contentDescription="Phone preview"
+                android:layout_gravity="center_horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Screen protector mode"
+                    android:textSize="16sp"
+                    android:textColor="#000000" />
+
+                <Switch
+                    android:id="@+id/switch_add_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:paddingRight="16dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show all notification content"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
 </RelativeLayout>
