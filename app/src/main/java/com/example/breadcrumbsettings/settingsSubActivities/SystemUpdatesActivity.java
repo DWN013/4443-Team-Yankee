@@ -7,20 +7,20 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.breadcrumbsettings.R;
 import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 
-public class HotspotDetailActivity extends AppCompatActivity {
+public class SystemUpdatesActivity extends AppCompatActivity {
     private BreadcrumbsViewModel breadcrumbsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotspot_detail);
+        setContentView(R.layout.activity_system_updates);
 
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
         if(getIntent().hasExtra("breadcrumbs")){
             String serialized = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serialized);
         }
-        breadcrumbsViewModel.addBreadcrumb("Hotspot", HotspotDetailActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("System & updates", SystemUpdatesActivity.class);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

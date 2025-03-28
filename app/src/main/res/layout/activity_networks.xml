@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -12,17 +13,42 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Toolbar -->
+        <!-- Minimal Toolbar: color set to match the page (using ?attr/colorSurface) and no title text -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/black"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:background="?attr/colorSurface"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:title="Network &amp; Internet"
-            app:titleTextColor="@android:color/white" />
+            app:title=""/>
 
+        <!-- Large Heading, placed below the Toolbar -->
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Network &amp; Internet"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <!-- Subtitle (optional) -->
+        <TextView
+            android:id="@+id/pageSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Manage your Wi‑Fi, Mobile Data, VPN, and Hotspot settings"
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <!-- List Items -->
         <!-- Wi‑Fi Item -->
         <LinearLayout
             android:id="@+id/wi_fi_item"
@@ -59,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:text="Show available networks"
                     android:textSize="14sp"
-                    android:textColor="#575a62" />
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </LinearLayout>
 
@@ -99,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:text="Enable or disable mobile data"
                     android:textSize="14sp"
-                    android:textColor="#575a62" />
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </LinearLayout>
 
@@ -139,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:text="Manage your VPN connections"
                     android:textSize="14sp"
-                    android:textColor="#575a62" />
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </LinearLayout>
 
@@ -179,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:text="Manage your hotspot settings"
                     android:textSize="14sp"
-                    android:textColor="#575a62" />
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </LinearLayout>
 

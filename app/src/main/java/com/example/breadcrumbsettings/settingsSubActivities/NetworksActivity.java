@@ -9,64 +9,93 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.breadcrumbsettings.MainSettingsActivity;
 import com.example.breadcrumbsettings.R;
+import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
+import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 
 public class NetworksActivity extends AppCompatActivity {
+    private BreadcrumbsViewModel breadcrumbsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_networks);
 
-        // Apply edge-to-edge padding on the root view (id "main")
-        View mainView = findViewById(R.id.main);
-        ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Get the breadcrumbs ViewModel shared among activities
+        breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
 
-        // Set up the toolbar
+        // If breadcrumbs were passed from a previous activity, deserialize them
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serialized = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serialized);
+        }
+        // Add this screen to breadcrumbs
+        breadcrumbsViewModel.addBreadcrumb("Networks", NetworksActivity.class);
+
+        // Show breadcrumbs fragment
+        showBreadcrumbsFragment();
+
+
+        View mainView = findViewById(R.id.main);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
+        }
+
+        // Setup Toolbar with minimal style
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
+        if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        // Navigation (back) button simply finishes this activity
-        toolbar.setNavigationOnClickListener(v -> finish());
-
-        // Set click listeners for each network settings item:
-        findViewById(R.id.wi_fi_item).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NetworksActivity.this, WifiDetailActivity.class);
-                startActivity(intent);
-            }
+        toolbar.setNavigationOnClickListener(v -> {
+            // When back is clicked, return breadcrumbs to the previous activity
+            Intent intent = new Intent(NetworksActivity.this, MainSettingsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
+            startActivity(intent);
+            finish();
         });
 
-        findViewById(R.id.mobile_data_item).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NetworksActivity.this, MobileDataDetailActivity.class);
-                startActivity(intent);
-            }
+        // Setup click listeners to launch detail activities.
+        findViewById(R.id.wi_fi_item).setOnClickListener(v -> {
+            Intent intent = new Intent(NetworksActivity.this, WifiDetailActivity.class);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
+            startActivity(intent);
         });
 
-        findViewById(R.id.vpn_item).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NetworksActivity.this, VPNDetailActivity.class);
-                startActivity(intent);
-            }
+        findViewById(R.id.mobile_data_item).setOnClickListener(v -> {
+            Intent intent = new Intent(NetworksActivity.this, MobileDataDetailActivity.class);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
+            startActivity(intent);
         });
 
-        findViewById(R.id.hotspot_item).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NetworksActivity.this, HotspotDetailActivity.class);
-                startActivity(intent);
-            }
+        findViewById(R.id.vpn_item).setOnClickListener(v -> {
+            Intent intent = new Intent(NetworksActivity.this, VPNDetailActivity.class);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
+            startActivity(intent);
         });
+
+        findViewById(R.id.hotspot_item).setOnClickListener(v -> {
+            Intent intent = new Intent(NetworksActivity.this, HotspotDetailActivity.class);
+            intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
+            startActivity(intent);
+        });
+    }
+
+    private void showBreadcrumbsFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
+        fragmentTransaction.replace(R.id.breadcrumbs_container, breadcrumbsFragment);
+        fragmentTransaction.commit();
     }
 }
