@@ -68,6 +68,7 @@ public class SoundActivity extends AppCompatActivity {
         // set on click listener for dnd being pressed
         TextView dnd = findViewById(R.id.dnd);
         dnd.setOnClickListener(v -> {
+            breadcrumbsViewModel.addBreadcrumb("Do Not Disturb", SoundDNDActivity.class);
             Intent intent = new Intent(SoundActivity.this, SoundDNDActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
