@@ -9,11 +9,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.breadcrumbsettings.R;
+import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
+import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 
 
 public class TouchSensitivityActivity extends AppCompatActivity {
+
+    private BreadcrumbsViewModel breadcrumbsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +31,21 @@ public class TouchSensitivityActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
+
+        // Deserialize breadcrumbs if present
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
+        }
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("Touch Sensitivity", TouchSensitivityActivity.class);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
         toolbar.setNavigationOnClickListener(v -> {
             // send user back to main activity
             Intent intent = new Intent(TouchSensitivityActivity.this, DisplayActivity.class);
@@ -34,5 +53,13 @@ public class TouchSensitivityActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); // Close the current activity
         });
+    }
+
+    private void showBreadcrumbsFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
+        fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
+        fragmentTransaction.commit();
     }
 }
