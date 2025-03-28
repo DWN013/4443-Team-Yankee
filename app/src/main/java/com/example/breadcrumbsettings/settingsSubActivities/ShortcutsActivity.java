@@ -39,7 +39,10 @@ public class ShortcutsActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
-        breadcrumbsViewModel.addBreadcrumb("Shortcuts", DisplayActivity.class);
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("Lock Screen", LockScreenActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("Shortcuts", ShortcutsActivity.class);
 
         showBreadcrumbsFragment();
 

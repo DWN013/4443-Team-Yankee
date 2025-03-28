@@ -36,6 +36,8 @@ public class ScreenTimeoutActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
         breadcrumbsViewModel.addBreadcrumb("Screen Timeout", DisplayActivity.class);
 
         showBreadcrumbsFragment();
