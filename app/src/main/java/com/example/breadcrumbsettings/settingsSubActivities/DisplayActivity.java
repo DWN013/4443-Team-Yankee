@@ -1,7 +1,11 @@
 package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -36,6 +40,7 @@ public class DisplayActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
+        breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
         breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
 
         showBreadcrumbsFragment();
