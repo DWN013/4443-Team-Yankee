@@ -1,6 +1,8 @@
 package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -9,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.breadcrumbsettings.R;
 import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
 import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
+import com.example.breadcrumbsettings.utils.SharedPreferencesUtil;
 
 public class AccountSecurityActivity extends AppCompatActivity {
     private BreadcrumbsViewModel breadcrumbsViewModel;
@@ -17,6 +20,10 @@ public class AccountSecurityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_security);
+
+        SharedPreferencesUtil.incrementTapCount(this);
+        int totalTaps = SharedPreferencesUtil.getTapCount(this);
+        Toast.makeText(this, "Total taps: " + totalTaps, Toast.LENGTH_SHORT).show();
 
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
         if(getIntent().hasExtra("breadcrumbs")) {

@@ -1,9 +1,9 @@
 package com.example.breadcrumbsettings;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +14,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -32,6 +35,7 @@ import com.example.breadcrumbsettings.settingsSubActivities.SecurityAndPrivacyAc
 import com.example.breadcrumbsettings.settingsSubActivities.SoundActivity;
 import com.example.breadcrumbsettings.settingsSubActivities.NetworksActivity;
 import com.example.breadcrumbsettings.settingsSubActivities.NotificationsActivity;
+import com.example.breadcrumbsettings.utils.SharedPreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +43,8 @@ import java.util.List;
 public class MainSettingsActivity extends AppCompatActivity {
     private BreadcrumbsViewModel breadcrumbsViewModel;
     private static final String TAG = "MainSettingsActivity";
-    private boolean isBlack = false;
+
+    private TextView tapCountText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +88,11 @@ public class MainSettingsActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new SettingsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+
+                SharedPreferencesUtil.incrementTapCount(MainSettingsActivity.this);
+                int totalTaps = SharedPreferencesUtil.getTapCount(MainSettingsActivity.this);
+                Toast.makeText(MainSettingsActivity.this, "Total taps: " + totalTaps, Toast.LENGTH_SHORT).show();
+
                 // Clear the breadcrumb path before navigating to a new tab
                 breadcrumbsViewModel.clearBreadcrumbs();
 
@@ -129,6 +139,35 @@ public class MainSettingsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Initialize the buttons and tap count text
+        Button clearTapsButton = findViewById(R.id.clear_taps_button);
+        tapCountText = findViewById(R.id.tap_count_text);
+        // Set click listener for the clear taps button
+        clearTapsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear the total taps count
+                clearTotalTaps();
+                updateTapCountText(0);
+                Toast.makeText(MainSettingsActivity.this, "Total taps cleared", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Restore total taps count and update the UI
+        int totalTaps = SharedPreferencesUtil.getTapCount(this);
+        updateTapCountText(totalTaps);
+    }
+
+    private void updateTapCountText(int totalTaps) {
+        tapCountText.setText("Total taps: " + totalTaps);
+    }
+
+    private void clearTotalTaps() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SharedPreferencesUtil.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(SharedPreferencesUtil.TOTAL_TAPS_KEY, 0);
+        editor.apply();
     }
 
     void showBreadcrumbsFragment() {

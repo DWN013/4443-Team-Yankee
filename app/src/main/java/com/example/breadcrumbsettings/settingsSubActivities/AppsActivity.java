@@ -17,6 +17,7 @@ import com.example.breadcrumbsettings.MainSettingsActivity;
 import com.example.breadcrumbsettings.R;
 import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
 import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
+import com.example.breadcrumbsettings.utils.SharedPreferencesUtil;
 
 public class AppsActivity extends AppCompatActivity {
     private BreadcrumbsViewModel breadcrumbsViewModel;
@@ -27,6 +28,10 @@ public class AppsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_apps);
+
+        SharedPreferencesUtil.incrementTapCount(this);
+        int totalTaps = SharedPreferencesUtil.getTapCount(this);
+        Toast.makeText(this, "Total taps: " + totalTaps, Toast.LENGTH_SHORT).show();
 
         breadcrumbsViewModel = new ViewModelProvider(this).get(BreadcrumbsViewModel.class);
 
