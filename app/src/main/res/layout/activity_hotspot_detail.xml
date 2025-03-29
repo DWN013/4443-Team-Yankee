@@ -1,149 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/breadcrumbs_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Minimal Toolbar with back arrow -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorSurface"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:title="" />
+
+            <!-- Large heading -->
+            <TextView
+                android:id="@+id/pageTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Hotspot &amp; tethering"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <!-- Subtext describing hotspot/tethering -->
+            <TextView
+                android:id="@+id/pageSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Use hotspot and tethering to provide internet to other devices through your mobile data connection. Apps can also create a hotspot to share content with nearby devices."
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <!-- Wi-Fi hotspot row -->
+            <LinearLayout
+                android:id="@+id/wifi_hotspot_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:id="@+id/wifi_hotspot_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Wi‑Fi hotspot"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/wifi_hotspot_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:minHeight="48dp" />
+            </LinearLayout>
+
+            <!-- USB tethering row (disabled, to match screenshot) -->
+            <LinearLayout
+                android:id="@+id/usb_tethering_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/usb_tethering_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="USB tethering"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/usb_tethering_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:minHeight="48dp"
+                    android:enabled="false" />
+            </LinearLayout>
+
+            <!-- Bluetooth tethering row -->
+            <LinearLayout
+                android:id="@+id/bluetooth_tethering_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/bluetooth_tethering_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bluetooth tethering"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/bluetooth_tethering_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:minHeight="48dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Minimal Toolbar with back arrow -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorSurface"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:title="" />
-
-        <!-- Large heading -->
-        <TextView
-            android:id="@+id/pageTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Hotspot &amp; tethering"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <!-- Subtext describing hotspot/tethering -->
-        <TextView
-            android:id="@+id/pageSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Use hotspot and tethering to provide internet to other devices through your mobile data connection. Apps can also create a hotspot to share content with nearby devices."
-            android:textSize="14sp"
-            android:textColor="?android:attr/textColorSecondary" />
-
-        <!-- Wi-Fi hotspot row -->
-        <LinearLayout
-            android:id="@+id/wifi_hotspot_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp">
-
-            <TextView
-                android:id="@+id/wifi_hotspot_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Wi‑Fi hotspot"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Switch
-                android:id="@+id/wifi_hotspot_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:minHeight="48dp" />
-        </LinearLayout>
-
-        <!-- USB tethering row (disabled, to match screenshot) -->
-        <LinearLayout
-            android:id="@+id/usb_tethering_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/usb_tethering_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="USB tethering"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Switch
-                android:id="@+id/usb_tethering_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:minHeight="48dp"
-                android:enabled="false" />
-        </LinearLayout>
-
-        <!-- Bluetooth tethering row -->
-        <LinearLayout
-            android:id="@+id/bluetooth_tethering_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/bluetooth_tethering_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Bluetooth tethering"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Switch
-                android:id="@+id/bluetooth_tethering_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:minHeight="48dp" />
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+</RelativeLayout>

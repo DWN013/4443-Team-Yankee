@@ -82,10 +82,10 @@ public class MainSettingsActivity extends AppCompatActivity {
                 breadcrumbsViewModel.clearBreadcrumbs();
 
                 switch (position) {
-//                    case 0: // Network & internet
-//                        breadcrumbsViewModel.addBreadcrumb("Network & internet", NetworksActivity.class);
-//                        startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
-//                        break;
+                    case 0: // Network & internet
+                        breadcrumbsViewModel.addBreadcrumb("Network & internet", NetworksActivity.class);
+                        startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
+                        break;
 //                    case 1: // Connected Devices
 //                        breadcrumbsViewModel.addBreadcrumb("Connected devices");
 //                        startActivity(new Intent(MainSettingsActivity.this, NotificationsActivity.class));
@@ -116,10 +116,10 @@ public class MainSettingsActivity extends AppCompatActivity {
                         breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
                         startActivity(new Intent(MainSettingsActivity.this, DisplayActivity.class));
                         break;
-//                    case 8: // Security and Privacy
-//                        breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
-//                        startActivity(new Intent(MainSettingsActivity.this, SecurityAndPrivacyActivity.class));
-//                        break;
+                    case 8: // Security and Privacy
+                        breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
+                        startActivity(new Intent(MainSettingsActivity.this, SecurityAndPrivacyActivity.class));
+                        break;
                     // Add more cases for other items if needed
                 }
             }

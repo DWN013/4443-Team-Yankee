@@ -1,73 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_above="@id/breadcrumbs_container">
 
-        <!-- Minimal Toolbar -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorSurface"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:title=""/>
-
-        <!-- Large heading -->
-        <TextView
-            android:id="@+id/pageTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Device unlock"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <!-- Subtitle -->
-        <TextView
-            android:id="@+id/pageSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Configure lock screen settings"
-            android:textSize="14sp"
-            android:textColor="?android:attr/textColorSecondary" />
-
-        <!-- Main content area -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_marginTop="12dp">
+            android:orientation="vertical">
 
+            <!-- Minimal Toolbar -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorSurface"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:title=""/>
+
+            <!-- Large heading -->
             <TextView
-                android:id="@+id/info_text"
-                android:layout_width="wrap_content"
+                android:id="@+id/pageTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Screen lock: None&#10;Fingerprint/Face unlock: Not set&#10;&#10;Features:&#10;• Set screen lock method&#10;• Enable biometric unlock"
-                android:textSize="16sp" />
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Device unlock"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary" />
 
-            <!-- Toggle Button -->
-            <Switch
-                android:id="@+id/device_unlock_toggle"
-                android:layout_width="wrap_content"
+            <!-- Subtitle -->
+            <TextView
+                android:id="@+id/pageSubtitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enable Device Unlock"
-                android:layout_marginTop="20dp"
-                android:minHeight="48dp"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Configure lock screen settings"
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <!-- Main content area -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Screen lock: None&#10;Fingerprint/Face unlock: Not set&#10;&#10;Features:&#10;• Set screen lock method&#10;• Enable biometric unlock"
+                    android:textSize="16sp" />
+
+                <!-- Toggle Button -->
+                <Switch
+                    android:id="@+id/device_unlock_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enable Device Unlock"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="48dp"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+</RelativeLayout>

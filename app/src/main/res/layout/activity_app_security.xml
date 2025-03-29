@@ -1,93 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/breadcrumbs_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Minimal Toolbar (back arrow, no title) -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorSurface"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:title="" />
+
+            <!-- Large heading -->
+            <TextView
+                android:id="@+id/pageTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="App security"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:id="@+id/pageSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Review and toggle app protection"
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <!-- Large illustration card -->
+            <LinearLayout
+                android:id="@+id/illustration_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:background="?attr/colorSurface"
+                android:elevation="2dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/illustration_image"
+                    android:layout_width="250dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_app_security_illustration"
+                    android:contentDescription="App security illustration" />
+            </LinearLayout>
+
+            <!-- Info + Toggle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Information Text -->
+                <TextView
+                    android:id="@+id/info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encryption Status: Encrypted&#10;Storage: Fully Encrypted&#10;&#10;Features:&#10;• View trusted credentials&#10;• Manage security certificates&#10;• Backup encryption keys"
+                    android:textSize="16sp" />
+
+                <!-- Toggle on its own line -->
+                <Switch
+                    android:id="@+id/app_security_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enable App Security"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="48dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/breadcrumbs_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Minimal Toolbar (back arrow, no title) -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorSurface"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
-            app:navigationIcon="@drawable/baseline_arrow_back_24"
-            app:title="" />
-
-        <!-- Large heading -->
-        <TextView
-            android:id="@+id/pageTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="App security"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <!-- Subtitle -->
-        <TextView
-            android:id="@+id/pageSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Review and toggle app protection"
-            android:textSize="14sp"
-            android:textColor="?android:attr/textColorSecondary" />
-
-        <!-- Large illustration card -->
-        <LinearLayout
-            android:id="@+id/illustration_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:padding="16dp"
-            android:orientation="vertical"
-            android:background="?attr/colorSurface"
-            android:elevation="2dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/illustration_image"
-                android:layout_width="250dp"
-                android:layout_height="150dp"
-                android:src="@drawable/ic_app_security_illustration"
-                android:contentDescription="App security illustration" />
-        </LinearLayout>
-
-        <!-- Info + Toggle -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Information Text -->
-            <TextView
-                android:id="@+id/info_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Encryption Status: Encrypted&#10;Storage: Fully Encrypted&#10;&#10;Features:&#10;• View trusted credentials&#10;• Manage security certificates&#10;• Backup encryption keys"
-                android:textSize="16sp" />
-
-            <!-- Toggle on its own line -->
-            <Switch
-                android:id="@+id/app_security_toggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enable App Security"
-                android:layout_marginTop="20dp"
-                android:minHeight="48dp"/>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+</RelativeLayout>
