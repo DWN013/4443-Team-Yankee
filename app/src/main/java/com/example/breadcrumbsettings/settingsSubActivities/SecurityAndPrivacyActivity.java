@@ -2,17 +2,11 @@ package com.example.breadcrumbsettings.settingsSubActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.breadcrumbsettings.MainSettingsActivity;
 import com.example.breadcrumbsettings.R;
 import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
@@ -33,13 +27,15 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
             String serialized = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serialized);
         }
-        // Add current screen to breadcrumbs
+        // Clear any previous breadcrumbs to ensure a fresh trail
+        breadcrumbsViewModel.clearBreadcrumbs();
+        // Add the current screen to breadcrumbs
         breadcrumbsViewModel.addBreadcrumb("Security & privacy", SecurityAndPrivacyActivity.class);
 
         // Show breadcrumbs fragment
         showBreadcrumbsFragment();
 
-        // Setup Toolbar
+        // Setup Toolbar with back navigation
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
@@ -53,7 +49,7 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
             finish();
         });
 
-        // Set click listeners for each item
+        // Set click listeners for each security & privacy item
         findViewById(R.id.app_security_item).setOnClickListener(v -> {
             Intent intent = new Intent(SecurityAndPrivacyActivity.this, AppSecurityActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
@@ -89,7 +85,7 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
-        // Add the BreadcrumbsFragment to the container
+        // Add the BreadcrumbsFragment to the container defined in activity_security_privacy.xml
         fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
         fragmentTransaction.commit();
     }

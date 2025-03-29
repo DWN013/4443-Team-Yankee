@@ -3,8 +3,11 @@ package com.example.breadcrumbsettings.settingsSubActivities;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.breadcrumbsettings.R;
+import com.example.breadcrumbsettings.breadcrumbs.BreadcrumbsFragment;
 import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
 
 public class MobileDataDetailActivity extends AppCompatActivity {
@@ -20,13 +23,26 @@ public class MobileDataDetailActivity extends AppCompatActivity {
             String serialized = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serialized);
         }
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
         breadcrumbsViewModel.addBreadcrumb("Mobile data", MobileDataDetailActivity.class);
+
+        // Display the breadcrumbs fragment
+        showBreadcrumbsFragment();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if(getSupportActionBar()!= null){
+        if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         toolbar.setNavigationOnClickListener(v -> finish());
+    }
+
+    private void showBreadcrumbsFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
+        fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
+        fragmentTransaction.commit();
     }
 }
