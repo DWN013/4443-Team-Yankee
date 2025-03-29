@@ -36,17 +36,8 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
         // Add current screen to breadcrumbs
         breadcrumbsViewModel.addBreadcrumb("Security & privacy", SecurityAndPrivacyActivity.class);
 
+        // Show breadcrumbs fragment
         showBreadcrumbsFragment();
-
-
-        View mainView = findViewById(R.id.main);
-        if (mainView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
-                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                return insets;
-            });
-        }
 
         // Setup Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -98,7 +89,8 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
-        fragmentTransaction.replace(R.id.breadcrumbs_container, breadcrumbsFragment);
+        // Add the BreadcrumbsFragment to the container
+        fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
         fragmentTransaction.commit();
     }
 }

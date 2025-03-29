@@ -37,9 +37,8 @@ public class NetworksActivity extends AppCompatActivity {
         // Add this screen to breadcrumbs
         breadcrumbsViewModel.addBreadcrumb("Networks", NetworksActivity.class);
 
-        // Show breadcrumbs fragment
+        // Show breadcrumbs fragment using add(), like in DisplayActivity
         showBreadcrumbsFragment();
-
 
         View mainView = findViewById(R.id.main);
         if (mainView != null) {
@@ -95,7 +94,8 @@ public class NetworksActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
-        fragmentTransaction.replace(R.id.breadcrumbs_container, breadcrumbsFragment);
+        // Add the fragment to the container, matching DisplayActivity's behavior
+        fragmentTransaction.add(R.id.breadcrumbs_container, breadcrumbsFragment);
         fragmentTransaction.commit();
     }
 }
