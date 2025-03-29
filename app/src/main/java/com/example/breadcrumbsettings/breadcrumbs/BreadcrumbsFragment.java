@@ -1,6 +1,7 @@
 package com.example.breadcrumbsettings.breadcrumbs;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,11 @@ import android.view.ViewGroup;
 
 import com.example.breadcrumbsettings.R;
 import com.example.breadcrumbsettings.model.BreadcrumbsViewModel;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.Stack;
 
 public class BreadcrumbsFragment extends Fragment implements BreadcrumbsAdapter.BreadcrumbClickListener {
@@ -47,6 +53,18 @@ public class BreadcrumbsFragment extends Fragment implements BreadcrumbsAdapter.
     private void updateBreadcrumbs(Stack<String> breadcrumbs) {
         breadcrumbsAdapter.setBreadcrumbs(breadcrumbs);
         Log.d(TAG, "Breadcrumbs updated: " + breadcrumbs);
+    }
+
+    public void updateBackgroundColor() {
+        try {
+            InputStream inputStream = getContext().openFileInput("breadcrumb_background.xml");
+            Drawable backgroundDrawable = Drawable.createFromStream(inputStream, null);
+            // Assuming there's a view or layout that uses this background drawable
+            // For example: breadcrumbsRecyclerView.setBackground(backgroundDrawable);
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,6 +1,9 @@
 package com.example.breadcrumbsettings;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -35,6 +39,7 @@ import java.util.List;
 public class MainSettingsActivity extends AppCompatActivity {
     private BreadcrumbsViewModel breadcrumbsViewModel;
     private static final String TAG = "MainSettingsActivity";
+    private boolean isBlack = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +131,7 @@ public class MainSettingsActivity extends AppCompatActivity {
         });
     }
 
-    private void showBreadcrumbsFragment() {
+    void showBreadcrumbsFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         BreadcrumbsFragment breadcrumbsFragment = new BreadcrumbsFragment();
