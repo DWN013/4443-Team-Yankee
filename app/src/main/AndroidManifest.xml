@@ -68,6 +68,22 @@
         <activity
             android:name=".settingsSubActivities.SecurityAndPrivacyActivity"
             android:exported="false" />
+        <activity
+            android:name=".settingsSubActivities.AccountSecurityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".settingsSubActivities.AppSecurityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".settingsSubActivities.DeviceFindersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".settingsSubActivities.DeviceUnlockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".settingsSubActivities.SystemUpdatesActivity"
+            android:exported="false" />
+
 
         <activity
             android:name=".MainSettingsActivity"

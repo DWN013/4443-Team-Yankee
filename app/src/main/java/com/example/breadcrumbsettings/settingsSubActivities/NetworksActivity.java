@@ -40,15 +40,6 @@ public class NetworksActivity extends AppCompatActivity {
         // Show breadcrumbs fragment using add(), like in DisplayActivity
         showBreadcrumbsFragment();
 
-        View mainView = findViewById(R.id.main);
-        if (mainView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
-                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                return insets;
-            });
-        }
-
         // Setup Toolbar with minimal style
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
