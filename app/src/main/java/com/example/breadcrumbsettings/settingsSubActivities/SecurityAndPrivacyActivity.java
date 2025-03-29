@@ -27,9 +27,8 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
             String serialized = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serialized);
         }
-        // Clear any previous breadcrumbs to ensure a fresh trail
-        breadcrumbsViewModel.clearBreadcrumbs();
         // Add the current screen to breadcrumbs
+        breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
         breadcrumbsViewModel.addBreadcrumb("Security & privacy", SecurityAndPrivacyActivity.class);
 
         // Show breadcrumbs fragment
