@@ -40,8 +40,9 @@ public class DisplayActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
-        breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
-        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+        //breadcrumbsViewModel.clearBreadcrumbs();
+        //breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
+        //breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
 
         showBreadcrumbsFragment();
 
@@ -84,6 +85,21 @@ public class DisplayActivity extends AppCompatActivity {
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Deserialize breadcrumbs if present
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
+        }
+
+        // Check if the breadcrumb exists before adding it
+        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+
+        showBreadcrumbsFragment();
     }
 
     private void showBreadcrumbsFragment() {
