@@ -40,8 +40,9 @@ public class DisplayActivity extends AppCompatActivity {
             String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
-        breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
-        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+        //breadcrumbsViewModel.clearBreadcrumbs();
+        //breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
+        //breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
 
         showBreadcrumbsFragment();
 
@@ -63,6 +64,7 @@ public class DisplayActivity extends AppCompatActivity {
         // set on click listener for app notifications being pressed
         TextView lockscreenDisplay = findViewById(R.id.lockscreen_display);
         lockscreenDisplay.setOnClickListener(v -> {
+            breadcrumbsViewModel.removeBreadcrumbsAfter(1);
             breadcrumbsViewModel.addBreadcrumb("Lock Screen", LockScreenActivity.class);
             Intent intent = new Intent(DisplayActivity.this, LockScreenActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
@@ -71,6 +73,7 @@ public class DisplayActivity extends AppCompatActivity {
 
         TextView touchsensitivityDisplay = findViewById(R.id.touchsensitivity_display);
         touchsensitivityDisplay.setOnClickListener(v -> {
+            breadcrumbsViewModel.removeBreadcrumbsAfter(1);
             breadcrumbsViewModel.addBreadcrumb("Touch Sensitivity", TouchSensitivityActivity.class);
             Intent intent = new Intent(DisplayActivity.this, TouchSensitivityActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
@@ -79,11 +82,27 @@ public class DisplayActivity extends AppCompatActivity {
 
         TextView screentimeoutDisplay = findViewById(R.id.screentimeout_display);
         screentimeoutDisplay.setOnClickListener(v -> {
+            breadcrumbsViewModel.removeBreadcrumbsAfter(1);
             breadcrumbsViewModel.addBreadcrumb("Screen Timeout", ScreenTimeoutActivity.class);
             Intent intent = new Intent(DisplayActivity.this, ScreenTimeoutActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Deserialize breadcrumbs if present
+        if (getIntent().hasExtra("breadcrumbs")) {
+            String serializedBreadcrumbs = getIntent().getStringExtra("breadcrumbs");
+            breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
+        }
+
+        // Check if the breadcrumb exists before adding it
+        breadcrumbsViewModel.addBreadcrumb("Display & touch", DisplayActivity.class);
+
+        showBreadcrumbsFragment();
     }
 
     private void showBreadcrumbsFragment() {

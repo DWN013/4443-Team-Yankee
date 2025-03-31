@@ -31,6 +31,9 @@ public class BreadcrumbsViewModel extends ViewModel {
             if (!currentBreadcrumbs.isEmpty() && currentBreadcrumbs.peek().equals(breadcrumb)) {
                 return;
             }
+
+            if (currentBreadcrumbs.contains(breadcrumb)) { return; }
+
             currentBreadcrumbs.push(breadcrumb);
             breadcrumbs.setValue(currentBreadcrumbs);
             breadcrumbActivities.put(breadcrumb, activityClass);
