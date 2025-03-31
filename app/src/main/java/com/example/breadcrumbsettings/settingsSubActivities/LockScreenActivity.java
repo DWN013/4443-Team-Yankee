@@ -59,6 +59,7 @@ public class LockScreenActivity extends AppCompatActivity {
 
         TextView shortcutDisplay = findViewById(R.id.shortcut_lockscreen);
         shortcutDisplay.setOnClickListener(v -> {
+            breadcrumbsViewModel.addBreadcrumb("Shortcuts", ShortcutsActivity.class);
             Intent intent = new Intent(LockScreenActivity.this, ShortcutsActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
