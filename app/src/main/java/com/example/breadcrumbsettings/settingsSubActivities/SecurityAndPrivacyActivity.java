@@ -29,7 +29,7 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
         }
         // Add the current screen to breadcrumbs
         breadcrumbsViewModel.addBreadcrumb("Home", MainSettingsActivity.class);
-        breadcrumbsViewModel.addBreadcrumb("Security & privacy", SecurityAndPrivacyActivity.class);
+        breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
 
         // Show breadcrumbs fragment
         showBreadcrumbsFragment();
@@ -50,30 +50,45 @@ public class SecurityAndPrivacyActivity extends AppCompatActivity {
 
         // Set click listeners for each security & privacy item
         findViewById(R.id.app_security_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("App security", AppSecurityActivity.class);
             Intent intent = new Intent(SecurityAndPrivacyActivity.this, AppSecurityActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.device_unlock_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("Device unlock", DeviceUnlockActivity.class);
             Intent intent = new Intent(SecurityAndPrivacyActivity.this, DeviceUnlockActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.account_security_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("Account security", AccountSecurityActivity.class);
             Intent intent = new Intent(SecurityAndPrivacyActivity.this, AccountSecurityActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.device_finders_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("Device finders", DeviceFindersActivity.class);
             Intent intent = new Intent(SecurityAndPrivacyActivity.this, DeviceFindersActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.system_updates_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Security & Privacy", SecurityAndPrivacyActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("System & updates", SystemUpdatesActivity.class);
             Intent intent = new Intent(SecurityAndPrivacyActivity.this, SystemUpdatesActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
