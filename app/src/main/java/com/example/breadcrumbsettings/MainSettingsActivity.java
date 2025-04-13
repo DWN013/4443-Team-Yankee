@@ -88,7 +88,7 @@ public class MainSettingsActivity extends AppCompatActivity {
 
                 switch (position) {
                     case 0: // Network & internet
-                        breadcrumbsViewModel.addBreadcrumb("Network & internet", NetworksActivity.class);
+                        breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
                         startActivity(new Intent(MainSettingsActivity.this, NetworksActivity.class));
                         break;
 //                    case 1: // Connected Devices

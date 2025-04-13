@@ -35,7 +35,8 @@ public class NetworksActivity extends AppCompatActivity {
             breadcrumbsViewModel.deserializeBreadcrumbs(serialized);
         }
         // Add this screen to breadcrumbs
-        breadcrumbsViewModel.addBreadcrumb("Networks", NetworksActivity.class);
+        breadcrumbsViewModel.clearBreadcrumbs();
+        breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
 
         // Show breadcrumbs fragment using add(), like in DisplayActivity
         showBreadcrumbsFragment();
@@ -57,24 +58,36 @@ public class NetworksActivity extends AppCompatActivity {
 
         // Setup click listeners to launch detail activities.
         findViewById(R.id.wi_fi_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("Wi-Fi", WifiDetailActivity.class);
             Intent intent = new Intent(NetworksActivity.this, WifiDetailActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.mobile_data_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("Mobile data", MobileDataDetailActivity.class);
             Intent intent = new Intent(NetworksActivity.this, MobileDataDetailActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.vpn_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("VPN", VPNDetailActivity.class);
             Intent intent = new Intent(NetworksActivity.this, VPNDetailActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
         });
 
         findViewById(R.id.hotspot_item).setOnClickListener(v -> {
+            breadcrumbsViewModel.clearBreadcrumbs();
+            breadcrumbsViewModel.addBreadcrumb("Network & Internet", NetworksActivity.class);
+            breadcrumbsViewModel.addBreadcrumb("Hotspot", HotspotDetailActivity.class);
             Intent intent = new Intent(NetworksActivity.this, HotspotDetailActivity.class);
             intent.putExtra("breadcrumbs", breadcrumbsViewModel.serializeBreadcrumbs());
             startActivity(intent);
