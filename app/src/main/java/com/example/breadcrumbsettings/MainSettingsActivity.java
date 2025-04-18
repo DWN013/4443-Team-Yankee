@@ -60,6 +60,7 @@ public class MainSettingsActivity extends AppCompatActivity {
             breadcrumbsViewModel.deserializeBreadcrumbs(serializedBreadcrumbs);
         }
 
+        //Comment this out to prevent breadcrumbs from being shown.
         showBreadcrumbsFragment();
 
         RecyclerView recyclerView = findViewById(R.id.settings_recycler_view);
